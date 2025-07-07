@@ -26,7 +26,6 @@ body {
   color: rgb(var(--gray-dark));
   font-size: 20px;
   line-height: 1.7;
-  overflow-x: hidden;
   font-size: 16px;
   background: linear-gradient(var(--gray-gradient)) no-repeat;
   font-family: -apple-system-font, Helvetica Neue, PingFang SC, Hiragino Sans GB,

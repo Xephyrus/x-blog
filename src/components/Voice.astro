@@ -3,10 +3,10 @@ const areas = Array.from({ length: 15 }, (_, index) => index);
 import "../styles/voice.css";
 ---
 
-<div class="grid">
+<div class="grid d-none d-md-block">
   {areas.map((_, index) => <div class="area" data-i={index} />)}
   <label class="wrap">
-    <input type="checkbox" />
+    <input id="switch" type="checkbox" />
     <div class="card">
       <div class="wave"></div>
       <div class="outline"></div>
