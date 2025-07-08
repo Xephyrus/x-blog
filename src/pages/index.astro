@@ -4,6 +4,63 @@ import Header from "../components/Header.astro";
 import Footer from "../components/Footer.astro";
 import { SITE_TITLE, SITE_DESCRIPTION } from "../consts";
 import Voice from "../components/Voice.astro";
+import Skill from "../components/Skill.astro";
+import GoldenSpiral from "../components/GoldenSpiral.astro";
+
+const skills = [
+  {
+    name: "HTML",
+    percent: 95,
+    delay: 0.1,
+  },
+  {
+    name: "CSS",
+    percent: 90,
+    delay: 0.1,
+  },
+  {
+    name: "JavaScript",
+    percent: 80,
+    delay: 0.2,
+  },
+  {
+    name: "NodeJS",
+    percent: 60,
+    delay: 0.3,
+  },
+  {
+    name: "Python",
+    percent: 30,
+    delay: 0.4,
+  },
+];
+
+const hobbies = [
+  {
+    name: "Playing Computer Game",
+    percent: 100,
+    delay: 0.1,
+  },
+  {
+    name: "Listening Music",
+    percent: 90,
+    delay: 0.2,
+  },
+  {
+    name: "Watching Sports Events",
+    percent: 90,
+    delay: 0.3,
+  },
+  {
+    name: "Reading",
+    percent: 80,
+    delay: 0.4,
+  },{
+    name: "Swimming",
+    percent: 75,
+    delay: 0.4,
+  },
+];
 ---
 
 <!doctype html>
@@ -14,7 +71,7 @@ import Voice from "../components/Voice.astro";
       rel="stylesheet"
       href="https://xephyrus.github.io/assets/fonts/BILLY_ARGEL_FONT/stylesheet.css"
     />
-    <style>
+    <style is:global>
       h1 {
         font-family: "BILLY ARGEL FONT", sans-serif;
         background-image: -webkit-linear-gradient(
@@ -26,22 +83,100 @@ import Voice from "../components/Voice.astro";
         -webkit-background-clip: text;
         background-clip: text;
         -webkit-text-fill-color: transparent;
-		font-size: 4rem;
+        font-size: 4rem;
+      }
+
+      .skill-container {
+        position: relative;
+        width: 100%;
+        background: #fff;
+        border-radius: 7px;
+        padding: 10px 20px;
+        border: 1px solid #ececec;
+        box-shadow: inset 0 0 0 200px rgba(255, 255, 255, 0.2);
+      }
+
+      .skill-container::after {
+        content: "";
+        display: block;
+        position: absolute;
+        width: 100%;
+        height: 100%;
+        left: 0;
+        top: 0;
+        border-radius: 7px;
+        filter: blur(10px);
+      }
+
+      .skill-container .skill-box {
+        width: 100%;
+        margin: 25px 0;
       }
     </style>
   </head>
   <body>
     <Header />
     <main class="container mt-0">
-      <h1 class="d-inline-block"> Xephyrus   Blog </h1>
-      <p class="fs-5">
-        Welcome to Xephyrus's blog, U can hear my voice and see my mind on this
-        website, as an independent developer, my abilities are very limited, but I still hope that everyone likes me and my blog, Thank you for your stay.
+      <h1 class="d-inline-block">Xephyrus Blog</h1>
+      <p>
+        <i
+          >Welcome to Xephyrus's blog, you can hear my voice and see my mind on
+          this website, as an independent developer, my abilities are very
+          limited, but I still hope that everyone likes me and my blog, Thank
+          you for your stay.</i
+        >
       </p>
-      <div class="position-relative" style="height: 72vh;">
+      <div class="position-relative d-none d-md-block" style="height: 80vh;">
         <Voice />
       </div>
+      <div class="row">
+        <div class="col-lg-6 mb-3">
+          <h2 class="text-center">My Skills</h2>
+          <div class="skill-container">
+            {
+              skills.map(
+                (skill: {
+                  percent: number | string;
+                  name: string;
+                  delay: number;
+                }) => (
+                  <Skill
+                    name={skill.name}
+                    percent={skill.percent}
+                    delay={skill.delay}
+                  />
+                )
+              )
+            }
+          </div>
+        </div>
+        <div class="col-lg-6 mb-3">
+          <h2 class="text-center">My Hobbies</h2>
+          <div class="skill-container">
+            {
+              hobbies.map(
+                (skill: {
+                  percent: number | string;
+                  name: string;
+                  delay: number;
+                }) => (
+                  <Skill
+                    name={skill.name}
+                    percent={skill.percent}
+                    delay={skill.delay}
+                  />
+                )
+              )
+            }
+          </div>
+        </div>
+        <div class="col-12">
+          <h2 class="text-center">Perfect Golden Spiral</h2>
+          <GoldenSpiral />
+        </div>
+      </div>
     </main>
+
     <Footer />
   </body>
 </html>

@@ -1,9 +1,9 @@
 ---
-const areas = Array.from({ length: 15 }, (_, index) => index);
 import "../styles/voice.css";
+const areas = Array.from({ length: 15 }, (_, index) => index);
 ---
 
-<div class="grid d-none d-md-block">
+<div class="grid">
   {areas.map((_, index) => <div class="area" data-i={index} />)}
   <label class="wrap">
     <input id="switch" type="checkbox" />

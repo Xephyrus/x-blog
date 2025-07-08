@@ -75,6 +75,7 @@ a:hover {
 }
 p {
   margin-bottom: 1em;
+  font-family: georgia;
 }
 .prose p {
   margin-bottom: 2em;
