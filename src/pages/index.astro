@@ -55,7 +55,8 @@ const hobbies = [
     name: "Reading",
     percent: 80,
     delay: 0.4,
-  },{
+  },
+  {
     name: "Swimming",
     percent: 75,
     delay: 0.4,
@@ -67,14 +68,11 @@ const hobbies = [
 <html lang="en">
   <head>
     <BaseHead title={SITE_TITLE} description={SITE_DESCRIPTION} />
-    <link
-      rel="stylesheet"
-      href="https://xephyrus.github.io/assets/fonts/BILLY_ARGEL_FONT/stylesheet.css"
-    />
+    <link rel="stylesheet" href="/fonts/BILLY_ARGEL_FONT/stylesheet.css" />
     <style is:global>
       h1 {
         font-family: "BILLY ARGEL FONT", sans-serif;
-        background-image: -webkit-linear-gradient(
+        background-image: linear-gradient(
           135deg,
           #833ab4,
           #fd1d1d,
@@ -86,26 +84,49 @@ const hobbies = [
         font-size: 4rem;
       }
 
+      .btn-colorful {
+        background-color: #f76591;
+        background-image: linear-gradient(-180deg, #ffc16f, #f76591);
+        font-size: clamp(0.8rem, 8vw, 0.9rem);
+        font-weight: 600;
+        color: #fffc;
+        width: max-content;
+        outline: 0;
+        border: 0;
+        border-radius: 6px;
+        box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        padding: 10px 20px;
+        margin-top: 26px;
+        text-align: center;
+        transform: scale(1);
+        transition: all 0.2s ease-in;
+        cursor: pointer;
+        touch-action: manipulation;
+        user-select: none;
+        pointer-events: auto;
+      }
+
+      .btn-colorful:hover {
+        color: #fff;
+      }
+
       .skill-container {
         position: relative;
         width: 100%;
-        background: #fff;
         border-radius: 7px;
         padding: 10px 20px;
-        border: 1px solid #ececec;
-        box-shadow: inset 0 0 0 200px rgba(255, 255, 255, 0.2);
+        background: linear-gradient(#fff2, transparent);
+        border: 2px solid transparent;
+        backdrop-filter: blur(24px);
+        box-shadow: inset 0px 0px 180px 5px #ffffff;
+        transition:
+          0.4s ease-in-out,
+          0.2s background ease-in-out;
       }
-
-      .skill-container::after {
-        content: "";
-        display: block;
-        position: absolute;
-        width: 100%;
-        height: 100%;
-        left: 0;
-        top: 0;
-        border-radius: 7px;
-        filter: blur(10px);
+      .skill-container:hover {
+        box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+        border: 2px solid rgba(255, 255, 255, 0.3);
+        background: rgba(255, 255, 255, 0.2);
       }
 
       .skill-container .skill-box {
@@ -118,18 +139,18 @@ const hobbies = [
     <Header />
     <main class="container mt-0">
       <h1 class="d-inline-block">Xephyrus Blog</h1>
-      <p>
+      <p class="font-georgia">
         <i
           >Welcome to Xephyrus's blog, you can hear my voice and see my mind on
           this website, as an independent developer, my abilities are very
-          limited, but I still hope that everyone likes me and my blog, Thank
+          limited, but I still hope that everyone likes me and my blog, thank
           you for your stay.</i
-        >
+        ><button type="button" class="btn-colorful ms-4">Explore</button>
       </p>
       <div class="position-relative d-none d-md-block" style="height: 80vh;">
         <Voice />
       </div>
-      <div class="row">
+      <div class="row mb-3">
         <div class="col-lg-6 mb-3">
           <h2 class="text-center">My Skills</h2>
           <div class="skill-container">

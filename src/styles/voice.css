@@ -3,8 +3,8 @@
   position: absolute;
   left: 0;
   right: 0;
-  top: -2.5rem;
-  bottom: -2.5rem;
+  top: 0;
+  bottom: 0;
   display: grid;
   grid-template-columns: repeat(5, 1fr);
   transform-style: preserve-3d;
