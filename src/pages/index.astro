@@ -11,7 +11,7 @@ const skills = [
   {
     name: "HTML",
     percent: 95,
-    delay: 0.1,
+    delay: 0,
   },
   {
     name: "CSS",
@@ -39,7 +39,7 @@ const hobbies = [
   {
     name: "Playing Computer Game",
     percent: 100,
-    delay: 0.1,
+    delay: 0,
   },
   {
     name: "Listening Music",
@@ -64,7 +64,28 @@ const hobbies = [
 ];
 ---
 
-<!doctype html>
+<script>
+  const target: HTMLElement | unknown = document.querySelector("#skills");
+  const observer = new IntersectionObserver(
+    (entries, observer) => {
+      entries.forEach((entry) => {
+        if (entry.isIntersecting) {
+          // 元素进入视口时触发动画
+          (target as HTMLElement).classList.add("animate");
+          console.log(target);
+          observer.unobserve(target as HTMLElement); // 仅触发一次，之后取消观察
+        }
+      });
+    },
+    {
+      root: null, // 使用视口作为根元素
+      threshold: 0.1, // 当目标元素10%进入视口时触发回调
+    }
+  );
+
+  observer.observe(target as HTMLElement); // 开始观察目标元素
+</script>
+
 <html lang="en">
   <head>
     <BaseHead title={SITE_TITLE} description={SITE_DESCRIPTION} />
@@ -72,12 +93,7 @@ const hobbies = [
     <style is:global>
       h1 {
         font-family: "BILLY ARGEL FONT", sans-serif;
-        background-image: linear-gradient(
-          135deg,
-          #833ab4,
-          #fd1d1d,
-          #fcb045
-        );
+        background-image: linear-gradient(135deg, #833ab4, #fd1d1d, #fcb045);
         -webkit-background-clip: text;
         background-clip: text;
         -webkit-text-fill-color: transparent;
@@ -115,18 +131,21 @@ const hobbies = [
         width: 100%;
         border-radius: 7px;
         padding: 10px 20px;
-        background: linear-gradient(#fff2, transparent);
+        background-image: linear-gradient(#fff2, transparent);
         border: 2px solid transparent;
         backdrop-filter: blur(24px);
         box-shadow: inset 0px 0px 180px 5px #ffffff;
+        cursor: pointer;
         transition:
-          0.4s ease-in-out,
-          0.2s background ease-in-out;
+          box-shadow 0.3s ease-in-out,
+          background-image 0.2s ease-in-out,
+          background-color 0.2s ease-in-out,
+          border-color 0.2s ease-in-out;
       }
       .skill-container:hover {
         box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
-        border: 2px solid rgba(255, 255, 255, 0.3);
-        background: rgba(255, 255, 255, 0.2);
+        border-color: rgba(255, 255, 255, 0.3);
+        background-image: rgba(255, 255, 255, 0.23);
       }
 
       .skill-container .skill-box {
@@ -138,7 +157,7 @@ const hobbies = [
   <body>
     <Header />
     <main class="container mt-0">
-      <h1 class="d-inline-block">Xephyrus Blog</h1>
+      <h1 class="d-inline-block mb-0">Xephyrus Blog</h1>
       <p class="font-georgia">
         <i
           >Welcome to Xephyrus's blog, you can hear my voice and see my mind on
@@ -150,7 +169,7 @@ const hobbies = [
       <div class="position-relative d-none d-md-block" style="height: 80vh;">
         <Voice />
       </div>
-      <div class="row mb-3">
+      <div id="skills" class="row mb-3">
         <div class="col-lg-6 mb-3">
           <h2 class="text-center">My Skills</h2>
           <div class="skill-container">

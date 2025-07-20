@@ -2,6 +2,18 @@
 const { name, percent, delay } = Astro.props;
 ---
 
+<style is:global>
+  .animate .skill-bar .skill-per {
+    position: relative;
+    display: block;
+    height: 100%;
+    width: var(--width);
+    border-radius: 6px;
+    background: #2030f4;
+    animation: progress 0.4s ease-in-out forwards;
+    opacity: 0;
+  }
+</style>
 <style>
   .skill-box .title {
     display: block;
@@ -16,17 +28,6 @@ const { name, percent, delay } = Astro.props;
     border-radius: 6px;
     margin-top: 6px;
     background: rgba(0, 0, 0, 0.1);
-  }
-
-  .skill-bar .skill-per {
-    position: relative;
-    display: block;
-    height: 100%;
-    width: 90%;
-    border-radius: 6px;
-    background: #2030f4;
-    animation: progress 0.4s ease-in-out forwards;
-    opacity: 0;
   }
 
   @keyframes progress {
@@ -69,7 +70,10 @@ const { name, percent, delay } = Astro.props;
 <div class="skill-box">
   <span class="title">{name}</span>
   <div class="skill-bar">
-    <span class="skill-per" style={{ width: `${percent}%`, animationDelay: `${delay}s` }}>
+    <span
+      class="skill-per"
+      style={{ "--width": `${percent}%`, animationDelay: `${delay}s` }}
+    >
       <span class="skill-tooltip">{percent}%</span>
     </span>
   </div>
