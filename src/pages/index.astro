@@ -72,7 +72,6 @@ const hobbies = [
         if (entry.isIntersecting) {
           // 元素进入视口时触发动画
           (target as HTMLElement).classList.add("animate");
-          console.log(target);
           observer.unobserve(target as HTMLElement); // 仅触发一次，之后取消观察
         }
       });

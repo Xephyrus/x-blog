@@ -58,7 +58,7 @@
   cursor: pointer;
 }
 
-.card {
+.voice-card {
   transform-style: preserve-3d;
   padding: 7px 7px 7px 7px;
   will-change: transform;
@@ -74,7 +74,7 @@
   padding-bottom: 70px;
   pointer-events: none;
 }
-.card::before {
+.voice-card::before {
   content: "";
   position: absolute;
   inset: 1px;
@@ -275,7 +275,7 @@
   animation: reducePath 0.5s ease forwards;
 }
 
-.card footer {
+.voice-card footer {
   transform: translateZ(10px);
   padding: 12px 18px;
   position: absolute;
@@ -284,7 +284,7 @@
   right: 17px;
   transform-style: preserve-3d;
 }
-.card footer::before {
+.voice-card footer::before {
   content: "";
   border-radius: 15px;
   animation: footer 9s ease infinite 0.8s;
@@ -302,7 +302,7 @@
     rgb(220 220 232 / 80%) 100%
   );
 }
-.card footer p {
+.voice-card footer p {
   display: flex;
   flex-wrap: wrap;
   gap: 0 4px;
@@ -314,11 +314,11 @@
   transition: all 0.3s ease;
   color: #696969;
 }
-.card footer .bold {
+.voice-card footer .bold {
   font-weight: 600;
   color: black;
 }
-.card footer span {
+.voice-card footer span {
   display: inline-block;
   animation: labels 9s ease calc(1s + var(--i) * 0.05s) infinite;
   opacity: 0;
@@ -326,34 +326,34 @@
 
 /** STATES */
 
-.wrap input:checked + .card .circle-1,
-.wrap input:checked + .card .circle-2,
-.wrap input:checked + .card .circle-1 .lines,
-.wrap input:checked + .card .circle-1 .lines svg,
-.wrap input:checked + .card .circle-1 .lines path,
-.wrap input:checked + .card .outline::before,
-.wrap input:checked + .card .circle-2 .bg {
+.wrap input:checked + .voice-card .circle-1,
+.wrap input:checked + .voice-card .circle-2,
+.wrap input:checked + .voice-card .circle-1 .lines,
+.wrap input:checked + .voice-card .circle-1 .lines svg,
+.wrap input:checked + .voice-card .circle-1 .lines path,
+.wrap input:checked + .voice-card .outline::before,
+.wrap input:checked + .voice-card .circle-2 .bg {
   animation-play-state: paused;
 }
-.wrap input:checked + .card .circle-1 .lines path {
+.wrap input:checked + .voice-card .circle-1 .lines path {
   opacity: 0;
 }
-.wrap input:checked + .card .wave {
+.wrap input:checked + .voice-card .wave {
   opacity: 0;
 }
-.wrap:hover .card:before {
+.wrap:hover .voice-card:before {
   backdrop-filter: blur(10px);
   background: transparent;
 }
 .wrap:hover .outline::before {
   animation-play-state: running;
 }
-.wrap:hover input:checked + .card .icon-2 {
+.wrap:hover input:checked + .voice-card .icon-2 {
   transform: translateY(80px) scale(0.7) rotateX(90deg);
   filter: blur(2px);
   opacity: 0;
 }
-.wrap:hover input:checked + .card .icon-1 {
+.wrap:hover input:checked + .voice-card .icon-1 {
   transform: none;
   filter: none;
   opacity: 1;
@@ -386,70 +386,70 @@
   opacity: 0.2;
 }
 
-.wrap:hover .card {
+.wrap:hover .voice-card {
   transform: perspective(var(--perspective)) rotateX(0) rotateY(0)
     scale3d(1, 1, 1);
 }
 
-.area:nth-child(15):hover ~ .wrap .card {
+.area:nth-child(15):hover ~ .wrap .voice-card {
   transform: perspective(var(--perspective)) rotateX(-15deg) rotateY(15deg)
     scale3d(1, 1, 1);
 }
-.area:nth-child(14):hover ~ .wrap .card {
+.area:nth-child(14):hover ~ .wrap .voice-card {
   transform: perspective(var(--perspective)) rotateX(-15deg) rotateY(7deg)
     scale3d(1, 1, 1);
 }
-.area:nth-child(13):hover ~ .wrap .card {
+.area:nth-child(13):hover ~ .wrap .voice-card {
   transform: perspective(var(--perspective)) rotateX(-15deg) rotateY(0)
     scale3d(1, 1, 1);
 }
-.area:nth-child(12):hover ~ .wrap .card {
+.area:nth-child(12):hover ~ .wrap .voice-card {
   transform: perspective(var(--perspective)) rotateX(-15deg) rotateY(-7deg)
     scale3d(1, 1, 1);
 }
-.area:nth-child(11):hover ~ .wrap .card {
+.area:nth-child(11):hover ~ .wrap .voice-card {
   transform: perspective(var(--perspective)) rotateX(-15deg) rotateY(-15deg)
     scale3d(1, 1, 1);
 }
 
-.area:nth-child(10):hover ~ .wrap .card {
+.area:nth-child(10):hover ~ .wrap .voice-card {
   transform: perspective(var(--perspective)) rotateX(0) rotateY(15deg)
     scale3d(1, 1, 1);
 }
-.area:nth-child(9):hover ~ .wrap .card {
+.area:nth-child(9):hover ~ .wrap .voice-card {
   transform: perspective(var(--perspective)) rotateX(0) rotateY(7deg)
     scale3d(1, 1, 1);
 }
-.area:nth-child(8):hover ~ .wrap .card {
+.area:nth-child(8):hover ~ .wrap .voice-card {
   transform: perspective(var(--perspective)) rotateX(0) rotateY(0)
     scale3d(1, 1, 1);
 }
-.area:nth-child(7):hover ~ .wrap .card {
+.area:nth-child(7):hover ~ .wrap .voice-card {
   transform: perspective(var(--perspective)) rotateX(0) rotateY(-7deg)
     scale3d(1, 1, 1);
 }
-.area:nth-child(6):hover ~ .wrap .card {
+.area:nth-child(6):hover ~ .wrap .voice-card {
   transform: perspective(var(--perspective)) rotateX(0) rotateY(-15deg)
     scale3d(1, 1, 1);
 }
 
-.area:nth-child(5):hover ~ .wrap .card {
+.area:nth-child(5):hover ~ .wrap .voice-card {
   transform: perspective(var(--perspective)) rotateX(15deg) rotateY(15deg)
     scale3d(1, 1, 1);
 }
-.area:nth-child(4):hover ~ .wrap .card {
+.area:nth-child(4):hover ~ .wrap .voice-card {
   transform: perspective(var(--perspective)) rotateX(15deg) rotateY(7deg)
     scale3d(1, 1, 1);
 }
-.area:nth-child(3):hover ~ .wrap .card {
+.area:nth-child(3):hover ~ .wrap .voice-card {
   transform: perspective(var(--perspective)) rotateX(15deg) rotateY(0)
     scale3d(1, 1, 1);
 }
-.area:nth-child(2):hover ~ .wrap .card {
+.area:nth-child(2):hover ~ .wrap .voice-card {
   transform: perspective(var(--perspective)) rotateX(15deg) rotateY(-7deg)
     scale3d(1, 1, 1);
 }
-.area:nth-child(1):hover ~ .wrap .card {
+.area:nth-child(1):hover ~ .wrap .voice-card {
   transform: perspective(var(--perspective)) rotateX(15deg) rotateY(-15deg)
     scale3d(1, 1, 1);
 }
