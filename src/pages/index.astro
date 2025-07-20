@@ -126,25 +126,53 @@ const hobbies = [
       }
 
       .skill-container {
-        position: relative;
         width: 100%;
-        border-radius: 7px;
         padding: 10px 20px;
-        background-image: linear-gradient(#fff2, transparent);
-        border: 2px solid transparent;
-        backdrop-filter: blur(24px);
-        box-shadow: inset 0px 0px 180px 5px #ffffff;
-        cursor: pointer;
-        transition:
-          box-shadow 0.3s ease-in-out,
-          background-image 0.2s ease-in-out,
-          background-color 0.2s ease-in-out,
-          border-color 0.2s ease-in-out;
       }
-      .skill-container:hover {
-        box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
-        border-color: rgba(255, 255, 255, 0.3);
-        background-image: rgba(255, 255, 255, 0.23);
+
+      .glass-card {
+        background: rgba(255, 255, 255, 0.15);
+        backdrop-filter: blur(20px);
+        -webkit-backdrop-filter: blur(20px);
+        border-radius: 10px;
+        border: 1px solid rgba(255, 255, 255, 0.3);
+        box-shadow:
+          0 8px 32px rgba(0, 0, 0, 0.1),
+          inset 0 1px 0 rgba(255, 255, 255, 0.5),
+          inset 0 -1px 0 rgba(255, 255, 255, 0.1),
+          inset 0 0 20px 10px rgba(255, 255, 255, 1);
+        position: relative;
+        overflow: hidden;
+      }
+
+      .glass-card::before {
+        content: "";
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        height: 1px;
+        background: linear-gradient(
+          90deg,
+          transparent,
+          rgba(255, 255, 255, 0.8),
+          transparent
+        );
+      }
+
+      .glass-card::after {
+        content: "";
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 1px;
+        height: 100%;
+        background: linear-gradient(
+          180deg,
+          rgba(255, 255, 255, 0.8),
+          transparent,
+          rgba(255, 255, 255, 0.3)
+        );
       }
 
       .skill-container .skill-box {
@@ -171,7 +199,7 @@ const hobbies = [
       <div id="skills" class="row mb-3">
         <div class="col-lg-6 mb-3">
           <h2 class="text-center">My Skills</h2>
-          <div class="skill-container">
+          <div class="skill-container glass-card">
             {
               skills.map(
                 (skill: {
@@ -191,7 +219,7 @@ const hobbies = [
         </div>
         <div class="col-lg-6 mb-3">
           <h2 class="text-center">My Hobbies</h2>
-          <div class="skill-container">
+          <div class="skill-container glass-card">
             {
               hobbies.map(
                 (skill: {
